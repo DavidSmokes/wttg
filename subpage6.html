@@ -117,9 +117,23 @@
 		}
 
     </style>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script>
+	function playMusic() {
+	
+	  var play=document.getElementById("music");
+	  play.play();
+	}
+	
+	$(document).ready(function(){
+	  setTimeout(PlayMusic,3000);
+	})
+	
+	</script>
 </head>
 <body>
-    <!-- Hintergrund-Regen -->
     <div class="rain"></div>
 	
 	<!-- Fliegender Text -->
@@ -132,9 +146,10 @@
         <img src="baby.gif" alt="BABY" width="300" height="300">
     </div>
 	
-	<audio autoplay loop muted>
+	<audio autoplay loop muted id="music">
 		<source src="babypiwo.mp3" type="audio/mpeg">
 		<source src="babypiwo.ogg" type="audio/ogg">
 	</audio>
+	<body>
 </body>
 </html>
