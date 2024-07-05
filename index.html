@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Wiki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+			width: 100%;
+            align-items: center;
+            border-bottom: 2px solid #8B0000; /* Unterstrich mit Border */
+            padding-bottom: 10px; /* Abstand unter dem Header */
+        }
+        .header h1 {
+            color: #8B0000; /* Tiefes Rot */
+            padding-bottom: 5px; /* Abstand unter dem Text */
+            margin: 0; /* Rand zurücksetzen */
+        }
+        .header img {
+            height: 50px; /* Größe des Logos anpassen */
+            margin-left: 10px; /* Kleiner Abstand zwischen Titel und Logo */
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: 50px;
+            color: #8B0000; /* Tiefes Rot */
+            border-top: 2px solid #8B0000; /* Oberer Border */
+            padding-top: 10px;
+            text-align: center; /* Text zentrieren */
+        }
+    </style>
+    <script>
+        function checkLinkTime(event, startHour, endHour) {
+            const currentHour = new Date().getHours();
+            if (currentHour < startHour || currentHour >= endHour) {
+                event.preventDefault();
+                window.location.href = 'error.html';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+		<img src="wikileaks-logo.png" alt="WikiLeaks Logo">
+        <h1>Hidden Wiki</h1>
+    </div>
+    <ul>
+        <li><a href="subpage1.html" onclick="checkLinkTime(event, 0, 24)">CrackNutz</a></li>
+        <li><a href="subpage2.html" onclick="checkLinkTime(event, 9, 17)">The End </a></li>
+        <li><a href="subpage3.html" onclick="checkLinkTime(event, 18, 21)">Ruler Of Dark</a></li>
+        <li><a href="subpage4.html" onclick="checkLinkTime(event, 6, 8)">Dopify</a></li>
+        <li><a href="subpage5.html" onclick="checkLinkTime(event, 19, 20)">Endless Mess</a></li>
+		<li><a href="subpage6.html" onclick="checkLinkTime(event, 21, 24)">PIWO BABY</a></li>
+    </ul>
+    <div class="footer">
+        © 2024 Dies ist eine satirische Parodie und keine echte Darknet-Seite. Bitte nicht ernst nehmen, wir können auch nichts dafür.
+    </div>
+</body>
+</html>

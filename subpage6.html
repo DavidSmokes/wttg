@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparentes GIF mit Regeneffekt</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Schwarzer Hintergrund */
+        }
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('piwo.gif') repeat; /* Hintergrund-Regeneffekt mit dem transparenten GIF */
+            z-index: -1;
+            animation: rainAnimation 5s linear infinite; /* Animation für den Hintergrund */
+        }
+        @keyframes rainAnimation {
+            from {
+                background-position: 0 0; /* Startposition oben */
+            }
+            to {
+                background-position: 0 100%; /* Endposition unten */
+            }
+        }
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: pulseAnimation 6s ease-in-out infinite; /* Animation für das zentrierte Bild */
+        }
+        @keyframes pulseAnimation {
+            0% {
+                transform: translate(-50%, -50%) scale(1); /* Startgröße */
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5); /* Zwischengröße, größer */
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1); /* Endgröße, zurück zur normalen Größe */
+            }
+        }
+		
+		.floating-text {
+			position: absolute;
+			top: 10%;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 24px;
+			font-weight: bold;
+			white-space: nowrap; /* Verhindert Zeilenumbruch */
+			animation: flyAnimation 10s linear infinite, colorAnimation 5s infinite, pulseAnimation 3s ease-in-out infinite;
+		}
+
+		@keyframes flyAnimation {
+			0% {
+				transform: translate(-50%, 10%);
+			}
+			12.5% {
+				transform: translate(0%, 10%);
+			}
+			25% {
+				transform: translate(0%, 90%);
+			}
+			37.5% {
+				transform: translate(-100%, 90%);
+			}
+			50% {
+				transform: translate(100%, 0%);
+			}
+			62.5% {
+				transform: translate(-100%, 0%);
+			}
+			75% {
+				transform: translate(0%, 90%);
+			}
+			87.5% {
+				transform: translate(0%, 10%);
+			}
+			100% {
+				transform: translate(-50%, 10%);
+			}
+		}
+
+		@keyframes colorAnimation {
+			0%, 100% {
+				color: #ff3333; /* Dunkelrot */
+			}
+			12.5% {
+				color: #ff66cc; /* Pink */
+			}
+			25% {
+				color: #3366ff; /* Blau */
+			}
+			37.5% {
+				color: #33cc33; /* Grün */
+			}
+			50% {
+				color: #ff9933; /* Orange */
+			}
+			62.5% {
+				color: #ff66cc; /* Pink */
+			}
+			75% {
+				color: #3366ff; /* Blau */
+			}
+			87.5% {
+				color: #33cc33; /* Grün */
+			}
+		}
+
+    </style>
+</head>
+<body>
+    <!-- Hintergrund-Regen -->
+    <div class="rain"></div>
+	
+	<!-- Fliegender Text -->
+    <div class="floating-text">
+        PIWO BABY
+    </div>
+	
+    <!-- Zentriertes GIF -->
+    <div class="centered">
+        <img src="baby.gif" alt="BABY" width="300" height="300">
+    </div>
+	
+	<audio autoplay loop muted>
+		<source src="babypiwo.mp3" type="audio/mpeg">
+		<source src="babypiwo.ogg" type="audio/ogg">
+	</audio>
+</body>
+</html>

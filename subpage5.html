@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vollständig gefüllte kryptische Seite mit versteckter Nachricht im sichtbaren Bereich</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000; /* Schwarzer Hintergrund */
+            color: #ffffff;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden; /* Verhindert horizontales Scrollen */
+            overflow-y: scroll; /* Ermöglicht vertikales Scrollen, falls notwendig */
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a; /* Dunkelgraues Hintergrund für den Header */
+            padding: 10px 0;
+            z-index: 1000; /* Sorgt dafür, dass der Header über dem Inhalt schwebt */
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .container {
+            max-width: 100%; /* Maximale Breite des Containers */
+            min-height: 100vh; /* Mindesthöhe des Browserfensters */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px; /* Platz für den Header */
+            overflow: hidden; /* Verhindert horizontales und vertikales Scrollen im .container */
+        }
+        .cryptic-text {
+            font-size: 18px;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            white-space: pre-wrap;
+            text-align: justify; /* Blocksatz */
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Vollständig gefüllte kryptische Seite</h1>
+    </div>
+    <div class="container">
+        <div class="cryptic-text" id="crypticText">
+            <!-- JavaScript wird verwendet, um diese Zeichen zu aktualisieren -->
+        </div>
+    </div>
+
+    <script>
+        // Funktion zur Generierung von zufälligen kryptischen Zeichen mit versteckter Nachricht
+        function generateCrypticText() {
+            let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[{]}|;:,<.>/?';
+            let text = '';
+            let windowWidth = window.innerWidth; // Breite des Browserfensters
+            let windowHeight = window.innerHeight - 50; // Höhe des Browserfensters abzüglich Header-Höhe
+            let charCount = Math.floor((windowWidth * windowHeight) / 20); // Anzahl der Zeichen basierend auf der Fenstergröße
+
+            // Generiere die zufälligen Zeichen
+            for (let i = 0; i < charCount; i++) {
+                let randomIndex = Math.floor(Math.random() * characters.length);
+                text += characters.charAt(randomIndex);
+            }
+
+            // Nachricht, die in die Mitte des Textes eingefügt wird
+            let message = "Dies ist eine versteckte Nachricht.";
+
+            // Füge die Nachricht in die Mitte des generierten Textes ein
+            let midpoint = Math.floor(text.length / 2);
+            text = text.slice(0, midpoint) + message + text.slice(midpoint);
+
+            return text;
+        }
+
+        // Aktualisiere den Inhalt des Elements mit der ID "crypticText"
+        document.getElementById('crypticText').textContent = generateCrypticText();
+    </script>
+</body>
+</html>

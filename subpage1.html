@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunkles Forum - Willkommen!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a; /* Dunkelgraues Hintergrund */
+            color: #ffffff;
+            padding: 0;
+            margin: 0;
+        }
+        .header {
+            background-color: #333333; /* Dunkelgrauer Header */
+            padding: 10px;
+			position: fixed; /* Header fixieren */
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 80px 20px 20px; /* Platz unterhalb des Headers und um den Container */
+        }
+        .forum {
+            width: 70%;
+            background-color: #292929; /* Dunkelgrauer Hintergrund für das Forum */
+            padding: 20px;
+        }
+        .sidebar {
+            width: 25%;
+            background-color: #333333; /* Dunkelgrauer Hintergrund für die Sidebar */
+			position: fixed; /* Sidebar fixieren */
+            top: 80px; /* Abstand vom oberen Rand */
+            right: 20px;
+            padding: 20px;
+        }
+        .menu {
+            list-style-type: none;
+            padding: 0;
+        }
+        .menu li {
+            margin-bottom: 10px;
+        }
+        .menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .menu li a:hover {
+            text-decoration: underline;
+        }
+		
+		.thread {
+        background-color: #333333; /* Dunkelgrauer Hintergrund für den Thread */
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+		}
+		.thread .post {
+			background-color: #292929; /* Dunkelgrauer Hintergrund für den Hauptpost */
+			padding: 15px;
+			border-radius: 5px;
+			margin-bottom: 15px;
+		}
+		.thread .post h3 {
+			color: #f04040; /* Roter Text für den Post-Titel */
+			font-size: 20px;
+			margin-top: 0;
+		}
+		.thread .post .author {
+			color: #ffcc00; /* Gelber Text für den Benutzernamen */
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+		.thread .post .date {
+			color: #aaaaaa; /* Grauer Text für das Erstelldatum */
+			font-size: 12px;
+		}
+		.thread .post p {
+			color: #ffffff; /* Weißer Text für den Post-Inhalt */
+			line-height: 1.6;
+		}
+		
+        .thread .post:last-child {
+            border-bottom: none;
+        }
+        .thread .post .reply {
+            font-weight: bold;
+            color: #333;
+        }
+        .date {
+            font-size: 0.9em;
+            color: #999;
+        }
+        .content {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dunkles Forum - Willkommen!</h1>
+    </div>
+    <div class="container">
+        <div class="forum">
+            <h2>Forum</h2>
+            <p>Hier sind die neuesten Diskussionen:</p>
+            <ul>
+                <li><a href="#">Diskussion 1</a></li>
+                <li><a href="#">Diskussion 2</a></li>
+                <li><a href="#">Diskussion 3</a></li>
+                <li><a href="#">Diskussion 4</a></li>
+                <li><a href="#">Diskussion 5</a></li>
+            </ul>
+        </div>
+        <div class="sidebar">
+            <h2>Menü</h2>
+            <ul class="menu">
+                <li><a href="#">Startseite</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Private Nachrichten</a></li>
+                <li><a href="#">Einstellungen</a></li>
+                <li><a href="#">Abmelden</a></li>
+            </ul>
+        </div>
+    </div>
+	
+	
+    <div class="forum">
+	
+	<div class="thread">
+    <div class="post">
+        <h3>Hauptpost: Geheime Diskussionen</h3>
+        <p class="author">Benutzer: JohnDoe</p>
+        <p class="date">2024-07-03 02:40</p>
+        <p>Have you tried the new snooks? I didnt dare just yet. Wanted to do some research before grabbing my own bag full of it. Is it safe to use?</p>
+    </div>
+	
+    <div class="reply">
+        <div class="post">
+            <div class="username">anonym</div>
+            <div class="date">2024-07-04 10:00</div>
+            <div class="content">I have tried the new lewd and it was awesome</div>
+        </div>
+        <div class="post">
+            <div class="username">muepmuep</div>
+            <div class="date">2024-07-04 10:15</div>
+            <div class="content">Ive heard it wasnt that good. Id rather go with godshand</div>
+        </div>
+        <div class="post">
+            <div class="username">dobbie3001</div>
+            <div class="date">2024-07-04 11:00</div>
+            <div class="content">Maybe you havent got the good stuff just yet. There is fakes on the market</div>
+        </div>
+    </div>
+	
+	</div>
+	
+	
+	
+        
+    </div>
+</body>
+</html>
