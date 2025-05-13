@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Eyer</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 150px;
+        }
+
+        .eye {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            border: 4px solid #000;
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 10px #00000044;
+        }
+
+        .eye.left {
+            left: 0;
+        }
+
+        .eye.right {
+            right: 0;
+        }
+
+        .pupil {
+            width: 30px;
+            height: 30px;
+            background: #000;
+            border-radius: 50%;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="eye left"><div class="pupil"></div></div>
+        <div class="eye right"><div class="pupil"></div></div>
+    </div>
+
+    <script>
+        const eyes = document.querySelectorAll('.eye');
+
+        document.addEventListener('mousemove', (event) => {
+            eyes.forEach(eye => {
+                const pupil = eye.querySelector('.pupil');
+                const rect = eye.getBoundingClientRect();
+                const eyeCenterX = rect.left + rect.width / 2;
+                const eyeCenterY = rect.top + rect.height / 2;
+
+                const dx = event.clientX - eyeCenterX;
+                const dy = event.clientY - eyeCenterY;
+                const angle = Math.atan2(dy, dx);
+
+                const radius = 20; // Begrenzung für Pupillenbewegung
+                const pupilX = Math.cos(angle) * radius;
+                const pupilY = Math.sin(angle) * radius;
+
+                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
