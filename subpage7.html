@@ -5,15 +5,72 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta name="description" content="">
-	<title>Welcome to Myraid</title>
-	<link rel="stylesheet" href="style.css" type="text/css">
-	<script language="javascript" type="text/javascript" src="../jQuery.min.js"></script>
-	<script language="javascript" type="text/javascript" src="../basic.js"></script>
+	<title>Welcome to Myraid</title> <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      color: #fff;
+      margin-bottom: 0.5em;
+    }
+
+    p.strong, .strong {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a {
+      color: #ff5c5c;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .red {
+      color: #ff4d4d;
+      font-weight: bold;
+    }
+
+    .center {
+      display: block; /* Damit der Text als Block dargestellt wird */
+      text-align: justify; /* Blocksatz für den Text */
+      margin: 0 auto; /* Zentriert den Container */
+      width: 80%; /* Breite des Containers, anpassbar */
+    }
+
+    img {
+      display: block;
+      margin: 30px auto;
+      max-width: 90%;
+      height: auto;
+      border: 2px solid #ff4d4d;
+      border-radius: 8px;
+    }
+
+  .fixatedcontainer {
+    display: flex; /* Flexbox verwenden */
+    flex-direction: row; /* In Reihen anordnen */
+    justify-content: space-between; /* Platz zwischen den Elementen */
+    }
+
+    /* Tooltip fallback for title text (optional styling if you want custom tooltips later) */
+    [title] {
+      cursor: help;
+    }
+  </style>
 </head>
 
 <body id="page">
-	<div id="container">
-		<h1 class="text-medium strong"> Welcome to MyRaid </h1>
+	<div class="center">
+		<h1 class="strong"> Welcome to MyRaid </h1>
 		<p> If you are like us and want to change the world in a different way, you're in the right place!
 			<br>We want to change the destiny of our world but through extreme pain
 			<br>We do not want to change this filthy world through compassion.
@@ -36,7 +93,7 @@
 			<br>They are remains of a weaker age and do not deserve to share the same space as the others!</p>
 		<p class="strong"> IF YOU ARE WITH US, WELCOME! </p>
 		<hr>
-		<div class="clearfix">
+		<div class="fixatedcontainer">
 			<div class="w33">
 				<p class="strong"> OUR OBJECTIVES </p>
 				<p class="pl pr"> Build peace through real pain! punish people who do not have pure morals those who worship a deity those who do not have the same characteristics as the others.
