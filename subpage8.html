@@ -2,22 +2,23 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Eyer</title>
+    <title>Eyer – They're watching</title>
     <style>
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #e0f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: #000;
+            overflow: hidden;
         }
 
-        .container {
-            position: relative;
-            width: 300px;
-            height: 150px;
+        .eye-pair {
+            position: absolute;
+            width: 160px;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .eye {
@@ -26,19 +27,22 @@
             background: #fff;
             border: 4px solid #000;
             border-radius: 50%;
-            position: absolute;
             display: flex;
             justify-content: center;
             align-items: center;
             box-shadow: inset 0 0 10px #00000044;
+            position: relative;
+            overflow: hidden;
         }
 
-        .eye.left {
-            left: 0;
+        .eye.faded {
+            background: #111;
+            border-color: #222;
+            box-shadow: inset 0 0 5px #111;
         }
 
-        .eye.right {
-            right: 0;
+        .eye.shaky {
+            animation: shake 0.3s infinite;
         }
 
         .pupil {
@@ -47,34 +51,117 @@
             background: #000;
             border-radius: 50%;
             position: relative;
+            z-index: 2;
+        }
+
+        /* Lid zum Blinzeln */
+        .lid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 50%;
+            z-index: 3;
+            transform: scaleY(0);
+            transform-origin: center;
+            animation: blink 5s infinite;
+            pointer-events: none;
+        }
+
+        /* Positionierungen */
+        .center     { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .top-left   { top: 20px; left: 20px; }
+        .top-right  { top: 20px; right: 20px; }
+        .bottom-left  { bottom: 20px; left: 20px; }
+        .bottom-right { bottom: 20px; right: 20px; }
+
+        .hidden1 { top: 30%; left: 10%; opacity: 0.1; }
+        .hidden2 { top: 70%; left: 80%; opacity: 0.08; }
+        .hidden3 { top: 15%; left: 60%; opacity: 0.05; }
+        .hidden4 { top: 85%; left: 30%; opacity: 0.07; }
+
+        /* Zittern */
+        @keyframes shake {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(1px, -1px); }
+            50% { transform: translate(-1px, 1px); }
+            75% { transform: translate(1px, 1px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Blinzeln */
+        @keyframes blink {
+            0%, 90%, 100% {
+                transform: scaleY(0);
+            }
+            95% {
+                transform: scaleY(1);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="eye left"><div class="pupil"></div></div>
-        <div class="eye right"><div class="pupil"></div></div>
-    </div>
+
+    <!-- Funktion für Augenpaare -->
+    <script>
+        const eyeConfigs = [
+            { classes: 'eye-pair center', shaky: false },
+            { classes: 'eye-pair top-left', shaky: true },
+            { classes: 'eye-pair top-right', shaky: false },
+            { classes: 'eye-pair bottom-left', shaky: true },
+            { classes: 'eye-pair bottom-right', shaky: false },
+            { classes: 'eye-pair hidden1', faded: true },
+            { classes: 'eye-pair hidden2', faded: true },
+            { classes: 'eye-pair hidden3', faded: true },
+            { classes: 'eye-pair hidden4', faded: true }
+        ];
+
+        eyeConfigs.forEach((config, index) => {
+            const pair = document.createElement('div');
+            pair.className = config.classes;
+
+            for (let i = 0; i < 2; i++) {
+                const eye = document.createElement('div');
+                eye.classList.add('eye');
+                if (config.shaky) eye.classList.add('shaky');
+                if (config.faded) eye.classList.add('faded');
+
+                const pupil = document.createElement('div');
+                pupil.className = 'pupil';
+
+                const lid = document.createElement('div');
+                lid.className = 'lid';
+                lid.style.animationDelay = `${Math.random() * 5}s`;
+
+                eye.appendChild(pupil);
+                eye.appendChild(lid);
+                pair.appendChild(eye);
+            }
+
+            document.body.appendChild(pair);
+        });
+    </script>
 
     <script>
-        const eyes = document.querySelectorAll('.eye');
-
+        // Pupillenbewegung
         document.addEventListener('mousemove', (event) => {
-            eyes.forEach(eye => {
+            document.querySelectorAll('.eye').forEach(eye => {
                 const pupil = eye.querySelector('.pupil');
                 const rect = eye.getBoundingClientRect();
-                const eyeCenterX = rect.left + rect.width / 2;
-                const eyeCenterY = rect.top + rect.height / 2;
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
 
-                const dx = event.clientX - eyeCenterX;
-                const dy = event.clientY - eyeCenterY;
+                const dx = event.clientX - centerX;
+                const dy = event.clientY - centerY;
                 const angle = Math.atan2(dy, dx);
 
-                const radius = 20; // Begrenzung für Pupillenbewegung
-                const pupilX = Math.cos(angle) * radius;
-                const pupilY = Math.sin(angle) * radius;
+                const radius = 20;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
 
-                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+                pupil.style.transform = `translate(${x}px, ${y}px)`;
             });
         });
     </script>
